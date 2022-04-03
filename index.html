@@ -26,14 +26,14 @@
 
 <div id="map"></div>
 <div id="heading">
-  <div id="title">Support in TX1</div>
+  <div id="title">Peek at TX1ish</div>
   <div id="descrip">Depicting the level of support in several Texas counties in the Coastal Plains region</div>
   <div id="author">By Sam LeBlanc</div>
 </div>
 <div id="settings">
   <form class="form-select" id="layer-select">
       <fieldset>
-        <legend>Select Layers
+        <legend class='legend-name' >Select Layers
           <div class="tooltip">❓
             <span class="tooltiptext">Select layers to view on the map. If using an opacity mask, multiple layers can be viewed at once.</span>
           </div>
@@ -44,13 +44,15 @@
           <input type="checkbox" id="chk-undecided" name="layers" value="undecided" onclick="colorMap()">&nbspUndecided<br>
           <input type="checkbox" id="chk-hispanic" name="layers" value="hispanic" onclick="colorMap()">&nbspHispanic Percent<br>
           <input type="checkbox" id="chk-share" name="layers" value="share" onclick="colorMap()">&nbspRegional Vote Share<br>
+          <input type="checkbox" id="chk-score" name="layers" value="score" onclick="colorMap()">&nbspDemocratic Target Score<br>
+          <span style="font-size:12px; font-weight: 900;">Score = 100*Und*VoteShare*(Dem–Rep)</span><br>
         </div>
       </fieldset>
   </form>
   <div style="padding-top: 5px;"></div>
   <form class="form-select" id="mask-select">
     <fieldset>
-      <legend>Select Opacity Mask
+      <legend class='legend-name'>Select Opacity Mask
         <div class="tooltip">❓
           <span class="tooltiptext">Opacity masks partially hide tiles with smaller values. Masks can be applied per by variable, or using the Vote Share variable for all layers. </span>
         </div>
@@ -65,7 +67,7 @@
   <div style="padding-top: 5px;"></div>
   <form class="form-select" id="tooltip-select">
     <fieldset>
-      <legend>Select Tooltip Info
+      <legend class='legend-name'>Select Tooltip Info
         <div class="tooltip">❓
           <span class="tooltiptext">Select what values appear when hovering over a county.</span>
         </div>
@@ -74,12 +76,12 @@
         <input type="checkbox" checked value="name" onclick="colorMap()">&nbspCounty Name<br>
         <input type="checkbox" checked value="dem" onclick="colorMap()">&nbspDemocratic Support<br>
         <input type="checkbox" checked value="margin" onclick="colorMap()">&nbspDemocratic Margin<br>
-        <input type="checkbox" checked value="target" onclick="colorMap()">&nbspDemocratic Target Score<br>
+        <input type="checkbox" checked value="score" onclick="colorMap()">&nbspDemocratic Target Score<br>
         <span style="font-size:12px; font-weight: 900;">Score = 100*Und*VoteShare*(Dem–Rep)</span><br>
-        <input type="checkbox" value="und" onclick="colorMap()">&nbspUndecided<br>
-        <input type="checkbox" value="rep" onclick="colorMap()">&nbspRepublican Support<br>
-        <input type="checkbox" value="hisp" onclick="colorMap()">&nbspHispanic Percentage<br>
-        <input type="checkbox" value="share" onclick="colorMap()">&nbspRegional Vote Share<br>
+        <input type="checkbox" checked value="und" onclick="colorMap()">&nbspUndecided<br>
+        <input type="checkbox" checked value="rep" onclick="colorMap()">&nbspRepublican Support<br>
+        <input type="checkbox" checked value="hisp" onclick="colorMap()">&nbspHispanic Percentage<br>
+        <input type="checkbox" checked value="share" onclick="colorMap()">&nbspRegional Vote Share<br>
       </div>
     </fieldset>
   </form>
@@ -94,6 +96,12 @@
 </div>
 
 <script>
+
+alert(`Catalist Analytics – Analyst Skills Assessment 2022 – Question 5C\n\n
+Try hovering over the districts to view information on them. The tooltip info can be changed in the selection box in the bottom left.\n\n
+On the left sidebar, you can select layers to view key data metrics. Multiple layers can be selected at once.\n\n
+You can also select opacity masks that preferentially hide layers with low data values.\n\n
+This visualization was created in JavaScript using Mapbox and D3 libraries. `)
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtbGVibGFuYyIsImEiOiJja2hneXNrOXUxOWdyMnF0OWgxdWRma3VsIn0.NClhc-lMIVbihpDxZ12YuQ';
 const map = new mapboxgl.Map({

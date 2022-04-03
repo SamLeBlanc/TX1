@@ -1,3 +1,5 @@
+//// LOAD SOURCES AND LAYERS
+
 //// Functions for adding the vector source and vector layers using basic Mapbox functions
 //// There are a total of one vector source, five fill layers, and two line layers
 
@@ -12,7 +14,7 @@ const addSource = () => {
 
 // Add the fill layer (inside the tiles) for each of the tile layers
 const addFillLayer = () => {
-  const fillLayers = ['dem-fills','rep-fills','undecided-fills','hispanic-fills','share-fills']
+  const fillLayers = ['top-fills','dem-fills','rep-fills','undecided-fills','hispanic-fills','share-fills','score-fills']
   fillLayers.forEach(layer => {
     map.addLayer({
       'id': layer,

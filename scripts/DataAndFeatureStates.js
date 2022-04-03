@@ -18,5 +18,6 @@ const setFeatStates = () => {
     map.setFeatureState({ source: 'source', sourceLayer: 'catalist-dqt6kw', id: d.id }, {'share'     : parseFloat(d['share'])} );
     map.setFeatureState({ source: 'source', sourceLayer: 'catalist-dqt6kw', id: d.id }, {'undecided' : parseFloat(d['undecided'])} );
     map.setFeatureState({ source: 'source', sourceLayer: 'catalist-dqt6kw', id: d.id }, {'hispanic'  : parseFloat(d['hispanic'])} );
+    map.setFeatureState({ source: 'source', sourceLayer: 'catalist-dqt6kw', id: d.id }, {'score'  : parseFloat(d['score'])} );
   });
 }

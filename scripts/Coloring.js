@@ -1,3 +1,4 @@
+//// COLOR THE MAP TILES
 
 // Combo method that sets the appearanec of the map
 // This gets re-run everytime the settings are changed
@@ -77,6 +78,21 @@ const colorLayers = () => {
     ],
     'rgba(200, 200, 200, 0.5)'
   ]);
+  map.setPaintProperty('score-fills', 'fill-color',
+  ['case',
+    ['!=', ['feature-state', 'score'], null],
+    ['interpolate',
+      ['linear'],
+        ['feature-state', 'score'],
+        -0.5,    '#440154',
+        -0.25,  '#3b528b',
+        0,    '#21918c',
+        0.25,  '#5ec962',
+        0.5,    '#fde725',
+    ],
+    'rgba(200, 200, 200, 0.5)'
+  ]);
+
 }
 
 // Set the fill opacity for each of the layers, using the feature states assgined earlier
@@ -146,12 +162,23 @@ const maskLayers = () => {
       ],
       0.5
     ]);
+    map.setPaintProperty('score-fills', 'fill-opacity',
+    ['case',
+      ['!=', ['feature-state', 'score'], 0],
+      ['interpolate',
+        ['linear'],
+          ['feature-state', 'score'],
+          -0.5,   0,
+          0.5,  0.6,
+      ],
+      0.5
+    ]);
   } else if ($("input[type='radio']:checked").val() == 'none'){
-    ['dem','rep','undecided','hispanic','share'].forEach(d => {
+    ['dem','rep','undecided','hispanic','share','score'].forEach(d => {
       map.setPaintProperty(`${d}-fills`, 'fill-opacity',1);
     })
   } else if ($("input[type='radio']:checked").val() == 'share'){
-    ['dem','rep','undecided','hispanic','share'].forEach(d => {
+    ['dem','rep','undecided','hispanic','share','score'].forEach(d => {
       map.setPaintProperty(`${d}-fills`, 'fill-opacity',
       ['case',
             ['!=', ['feature-state', 'share'], 0],
@@ -170,7 +197,7 @@ const maskLayers = () => {
 // Hide the layers that are not checked in the layer select form
 // Layers that are hidden are assigned the layout property of invisible, but we do not change the color or opacity
 const hideLayers = () => {
-  let boxes = ['dem','rep','undecided','hispanic','share']
+  let boxes = ['dem','rep','undecided','hispanic','share','score']
   boxes.forEach(d => {
     if ($(`#chk-${d}`).is(':checked')){
       map.setLayoutProperty(`${d}-fills`, 'visibility', 'visible')

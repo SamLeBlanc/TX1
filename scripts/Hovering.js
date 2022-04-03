@@ -1,10 +1,15 @@
+//// HOVER STATES AND TOOLTIPS
+
+//// These functions set up the environment for hover states.
+//// We keep track of the 'hoveredId' which is the last object that was hovered over
+
 let hoveredId = null;
 const hoverSetup = () => {
-  map.on('mousemove', 'dem-fills', e => {
+  map.on('mousemove', 'top-fills', e => {
     onHoverStart(e);
     hoveredId = setHoverState(e, hoveredId);
   });
-  map.on('mouseleave', 'dem-fills', () => {
+  map.on('mouseleave', 'top-fills', () => {
     onHoverFinish();
     removeHoverState(hoveredId);
   });
@@ -33,11 +38,12 @@ const onHoverStart = e => {
   if (chked_.includes('name')) arr.push(['Name', feature.name])
   if (chked_.includes('dem')) arr.push(['Dem Support', feature.demsupport])
   if (chked_.includes('margin')) arr.push(['Dem Margin', feature.demsupport - feature.repsupport])
-  if (chked_.includes('target')) arr.push(['Dem Target', 100*(feature.share*feature.undecided)*(feature.demsupport - feature.repsupport)])
+  if (chked_.includes('score')) arr.push(['Dem Target',feature.score])
   if (chked_.includes('rep')) arr.push(['Rep Support', feature.repsupport])
   if (chked_.includes('und')) arr.push(['Undecided', feature.undecided])
   if (chked_.includes('hisp')) arr.push(['Hispanic%', feature.hispanic])
   if (chked_.includes('share')) arr.push(['Vote Share', feature.share])
+
 
   arr = arr.map(a => {
     try {
@@ -75,10 +81,13 @@ const addMoveTable = arr => {
   table.appendChild(tableBody);
   for (i = 0; i < arr.length; i++) {
     let tr = document.createElement('TR');
-    if (i==0) tr.style.fontWeight = "900";
+    if (i==0 || (arr[i][0] == 'Dem Target')) {
+      tr.style.fontWeight = "900"
+      tr.style.fontSize = "20px"
+    }
     for (j = 0; j < arr[i].length; j++) {
       let td = document.createElement('TD')
-      td.width = (100+j*20).toString().concat('px')
+      td.width = (140-j*30).toString().concat('px')
       td.appendChild(document.createTextNode(arr[i][j]));
       tr.appendChild(td)
     }
