@@ -81,9 +81,13 @@ const addMoveTable = arr => {
   table.appendChild(tableBody);
   for (i = 0; i < arr.length; i++) {
     let tr = document.createElement('TR');
-    if (i==0 || (arr[i][0] == 'Dem Target')) {
+    if (i==0 ) {
       tr.style.fontWeight = "900"
       tr.style.fontSize = "20px"
+    }
+    if (arr[i][0] == 'Dem Target') {
+      tr.style.fontWeight = "900"
+      tr.style.fontSize = "16px"
     }
     for (j = 0; j < arr[i].length; j++) {
       let td = document.createElement('TD')

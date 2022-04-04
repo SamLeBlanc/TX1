@@ -22,7 +22,7 @@ table.tableA td, table.tableA th{ border-bottom: 1px solid blue;}
 #legend2{ left: 630px; }
 #legend3{ left: 740px; }
 #legend4{ left: 850px; }
-#legend5{ left: 950px; }
+#legend5{ left: 960px; }
 
 .tooltip { position: relative; display: inline-block; border-bottom: 1px dotted black; }
 .tooltip .tooltiptext { visibility: hidden; width: 400px; background-color: black; color: #fff; text-align: center; border-radius: 6px; padding: 5px 5px; position: absolute; z-index: 1; }
