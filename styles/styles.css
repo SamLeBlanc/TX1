@@ -3,7 +3,7 @@ body { margin: 0; padding: 0; font-family: Helvetica; overflow: hidden}
 
 #heading {position: absolute; top: 0; left: 0; z-index:10; margin:10px; font-weight:900;}
 #settings {position: absolute; top: 150px; left: 0; z-index:10; margin:10px; font-weight:900; font-size:14px}
-#title { -webkit-text-stroke: 1.5px #f065c7; color:#ddd; font-size:60px; position: absolute; top: -20px; width:500px;}
+#title { -webkit-text-stroke: 1.5px #f065c7; color:#ddd; font-size:55px; position: absolute; top: -20px; width:550px;}
 #author { color:#ddd; font-size:20px; position: absolute; top: 110px; width: 500px;}
 #subtitle{ font-size:20px; color:#ddd; margin:5px -5px 0px 0px }
 #descrip{ -webkit-text-stroke: 1px #f065c7; position: absolute; font-size:20px; top:50px; color:#ddd; margin:5px -5px 0px 0px; width:500px; padding: 0px 10 0px 10px; max-width: 500px;}
